@@ -1,0 +1,61 @@
+package tema1;
+
+public class MatPares
+{
+	private int di, ren, col;
+	private int[][] num, dir;
+	private ed.Datos obd = new ed.Datos();
+
+	public MatPares()
+	{
+		do
+			ren = obd.Entero("Numero de renglones: ");
+		while (ren < 2);
+		do
+			col = obd.Entero("Numero de columnas: ");
+		while (col < 2);
+		do
+			di = obd.Entero("Direccion inicial: ");
+		while (di < 1);
+		num = new int[ren][col];
+		dir = new int[ren][col];
+		this.Aleatorios();
+		this.Direcciones();
+		this.Mostrar();
+	}
+
+	private void Aleatorios()
+	{
+		java.util.Random obr = new java.util.Random();
+		for (ren = 0; ren < num.length; ren++)
+			for (col = 0; col < num[ren].length; col++)
+				num[ren][col] = obr.nextInt(101);
+	}
+
+	private void Direcciones()
+	{
+		for (ren = 0; ren < num.length; ren++)
+			for (col = 0; col < num[ren].length; col++)
+				if (num[ren][col] % 2 == 0)
+					dir[ren][col] = di + (num[0].length * ren + col) * 4;
+	}
+
+	private void Mostrar()
+	{
+		System.out.println("\nDatos de la matriz..");
+		for (ren = 0; ren < num.length; ren++)
+		{
+			for (col = 0; col < num[ren].length; col++)
+				System.out.print(num[ren][col] + "\t");
+			System.out.println();
+		}
+		System.out.println("\nDirecciones de memoria de los pares...");
+		for (ren = 0; ren < num.length; ren++)
+		{
+			for (col = 0; col < num[ren].length; col++)
+				System.out.print(dir[ren][col] != 0 ? dir[ren][col] + "\t" : "\t");
+			System.out.println();
+		}
+	}
+
+}

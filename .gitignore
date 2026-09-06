@@ -1,0 +1,9 @@
+# Compilados de Java
+bin/
+*.class
+
+# Metadatos de Eclipse
+.metadata/
+.settings/
+.project
+.classpath
